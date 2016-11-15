@@ -8,10 +8,22 @@
 
 import UIKit
 
+fileprivate let ZHTitleViewH: CGFloat = 40
 class HomeViewController: UIViewController {
 
+     //MARK: -懒加载属性
+       fileprivate lazy var pageTitleView :PageTitleView = {
+        
+
+        let titleframe = CGRect(x: 0, y: ZHStatusBarH+ZHNavigationBarH, width: ZHScreenW, height: ZHTitleViewH )
+        let titles = ["推荐","游戏","娱乐","趣玩"]
+        let titleView = PageTitleView(frame: titleframe, titles: titles)
+            
+        return titleView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //设置UI界面
         setupUI()
         
     }
@@ -21,15 +33,19 @@ class HomeViewController: UIViewController {
  //MARK: -设置UI界面
 extension HomeViewController {
     
-     func setupUI() {
-        //设置导航栏
+    fileprivate func setupUI() {
+        //0.不需要调整uiscrollView的内边距(有导航栏系统自动设置64的内边距)
+        automaticallyAdjustsScrollViewInsets = false
+        //1.设置导航栏
         setupNavigationBar()
+        //2.添加titleView
+        view.addSubview(pageTitleView)
     
     }
     private func setupNavigationBar(){
-        //1.设置左侧item
+        //1.1设置左侧item
                 navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "logo")
-        //2.设置右侧items
+        //1.2设置右侧items
         let size = CGSize(width: 40, height: 40);
         
 
