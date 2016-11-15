@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="1056.8" y="178.56071964017991"/>
         </scene>
-        <!--Item-->
+        <!--直播-->
         <scene sceneID="d5P-be-uOZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lyf-Nj-3dE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="lmi-pL-xuQ"/>
+                    <tabBarItem key="tabBarItem" title="直播" image="btn_column_normal" selectedImage="btn_column_selected" id="lmi-pL-xuQ"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BbV-gp-hGF">
@@ -49,4 +49,8 @@
             <point key="canvasLocation" x="117.59999999999999" y="178.56071964017991"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_column_normal" width="24" height="24"/>
+        <image name="btn_column_selected" width="24" height="24"/>
+    </resources>
 </document>

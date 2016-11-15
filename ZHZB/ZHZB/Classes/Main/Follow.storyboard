@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="1096.8" y="15.742128935532236"/>
         </scene>
-        <!--Item-->
+        <!--关注-->
         <scene sceneID="Fq9-ZP-Z3w">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2wk-Iy-DA5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="EXp-za-ODO"/>
+                    <tabBarItem key="tabBarItem" title="关注" image="btn_live_normal" selectedImage="btn_live_selected" id="EXp-za-ODO"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U6S-Ej-hoT">
@@ -49,4 +49,8 @@
             <point key="canvasLocation" x="157.59999999999999" y="15.742128935532236"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_live_normal" width="30" height="24"/>
+        <image name="btn_live_selected" width="30" height="24"/>
+    </resources>
 </document>
