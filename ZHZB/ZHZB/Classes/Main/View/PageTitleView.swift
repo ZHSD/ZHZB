@@ -7,21 +7,26 @@
 //
 
 import UIKit
+ //MARK: -D1定义代理协议
+protocol PageTitleViewDelegate : class {
+    func pagetitleView(titleView: PageTitleView,selectIndex index : Int) }
 fileprivate let ZHScrollLineH : CGFloat = 2
 class PageTitleView: UIView {
     
      //MARK: -定义属性
-        fileprivate var titles : [String]
+    fileprivate var currentIndex : Int = 0
+    fileprivate var titles : [String]
+    weak var delegate : PageTitleViewDelegate?
      //MARK: -懒加载属性
     fileprivate lazy var titleLables:[UILabel] = [UILabel]()
-        fileprivate lazy var TitleScrollView: UIScrollView = {
+    fileprivate lazy var TitleScrollView: UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.showsHorizontalScrollIndicator = false
         scrollview.scrollsToTop = false
         scrollview.bounces = false
         return scrollview
     }()
-    fileprivate lazy var scrollLine:UIView = {
+        fileprivate lazy var scrollLine:UIView = {
         let scrollLine = UIView()
         scrollLine.backgroundColor = UIColor.orange
         return scrollLine
@@ -75,6 +80,10 @@ extension PageTitleView{
             //2.4 将lable添加的acrollView中
             TitleScrollView.addSubview(lable)
             titleLables.append(lable)
+            //2.5 给lable添加手势
+            lable.isUserInteractionEnabled = true
+            let tapGes = UITapGestureRecognizer(target: self, action: #selector(self.titleLableClick(tapGes:)))
+            lable.addGestureRecognizer(tapGes)
         }
     }
     private func setupBottomLineAndScrollLine(){
@@ -95,3 +104,30 @@ extension PageTitleView{
     
     }
 }
+ //MARK: -监听lable的点击
+extension PageTitleView {
+    @objc fileprivate func titleLableClick(tapGes:UITapGestureRecognizer){
+        //2.5.1.获取当前的lable
+        guard let currentLable = tapGes.view as?UILabel else { return}
+        //2.5.2.获取之前的lable
+        let oldLable = titleLables[currentIndex]
+        
+        //2.5.3切换文字颜色
+        currentLable.textColor = UIColor.orange
+        oldLable.textColor = UIColor.darkGray
+        //2.5.4保存点击lable的下标值
+        currentIndex = currentLable.tag
+        //2.5.5滚动条位置发生改变
+        let scrollLineX = CGFloat(currentLable.tag)  * scrollLine.frame.width
+        //添加动画修改位置
+        
+        UIView.animate(withDuration: 0.25, animations: {
+        self.scrollLine.frame.origin.x = scrollLineX
+        })
+        
+        //2.5.6 通知代理
+        delegate?.pagetitleView(titleView: self, selectIndex: currentIndex)
+    }
+    
+}
+

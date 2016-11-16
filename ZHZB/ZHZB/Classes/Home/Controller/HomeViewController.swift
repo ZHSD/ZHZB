@@ -12,11 +12,12 @@ fileprivate let ZHTitleViewH: CGFloat = 40
 class HomeViewController: UIViewController {
 
      //MARK: -懒加载属性
-       fileprivate lazy var pageTitleView : PageTitleView = {
+       fileprivate lazy var pageTitleView : PageTitleView = {[weak self] in
         
         let titleframe = CGRect(x: 0, y: ZHStatusBarH+ZHNavigationBarH, width: ZHScreenW, height: ZHTitleViewH )
         let titles = ["推荐","游戏","娱乐","趣玩"]
         let titleView = PageTitleView(frame: titleframe, titles: titles)
+        titleView.delegate = self
             
         return titleView
     }()
@@ -77,4 +78,11 @@ extension HomeViewController {
         navigationItem.rightBarButtonItems = [hister,search,qrcode]
     }
     
+}
+ //MARK: -遵守PageTitleViewDelegate协议
+extension HomeViewController : PageTitleViewDelegate {
+    func pagetitleView(titleView: PageTitleView, selectIndex index: Int) {
+        pageContentView.setCurrentIndent(currentIndex: index)
+    }
+
 }

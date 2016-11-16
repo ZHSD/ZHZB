@@ -77,3 +77,10 @@ extension PageContentView:UICollectionViewDataSource {
         
     }
 }
+ //MARK: -对外暴露的方法
+extension PageContentView {
+      func setCurrentIndent(currentIndex : Int)  {
+                let  offsetX = CGFloat(currentIndex) * ZHScreenW
+        collectionView.setContentOffset(CGPoint(x : offsetX,y:0 ), animated: false)
+    }
+}
