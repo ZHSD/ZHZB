@@ -10,7 +10,10 @@ import UIKit
  //MARK: -D1定义代理协议
 protocol PageTitleViewDelegate : class {
     func pagetitleView(titleView: PageTitleView,selectIndex index : Int) }
+ //MARK: -定义常量
 fileprivate let ZHScrollLineH : CGFloat = 2
+fileprivate let ZHNormalColor : (CGFloat , CGFloat , CGFloat) = (85,85,85)
+fileprivate let ZHSelectColor : (CGFloat ,CGFloat, CGFloat) = (255,128,0)
 class PageTitleView: UIView {
     
      //MARK: -定义属性
@@ -69,7 +72,7 @@ extension PageTitleView{
             lable.text = title
             lable.tag = index
             lable.font = UIFont.systemFont(ofSize: 16.0)
-            lable.textColor = UIColor.darkGray
+            lable.textColor = UIColor(r: ZHNormalColor.0, g: ZHNormalColor.1, b: ZHNormalColor.2)
             lable.textAlignment = .center
             //2.3 设置lable的frame
             
@@ -96,7 +99,7 @@ extension PageTitleView{
         //3.2 添加滚动指示(scrollLine的frame更具lable的frame设置)
         //3.2.1 获取的一个lable
         guard let firstLable = titleLables.first else { return }
-        firstLable.textColor = UIColor.orange
+        firstLable.textColor = UIColor(r: ZHSelectColor.0, g: ZHSelectColor.1, b: ZHSelectColor.2)
         //3.2.2添加滚动指示器
         TitleScrollView.addSubview(scrollLine)
         //3.2.3 更具lable的frame设置滚动指示器的frame
@@ -113,8 +116,8 @@ extension PageTitleView {
         let oldLable = titleLables[currentIndex]
         
         //2.5.3切换文字颜色
-        currentLable.textColor = UIColor.orange
-        oldLable.textColor = UIColor.darkGray
+        currentLable.textColor = UIColor(r: ZHSelectColor.0, g: ZHSelectColor.1, b: ZHSelectColor.2)
+        oldLable.textColor = UIColor(r: ZHNormalColor.0, g: ZHNormalColor.1, b: ZHNormalColor.2)
         //2.5.4保存点击lable的下标值
         currentIndex = currentLable.tag
         //2.5.5滚动条位置发生改变
@@ -133,7 +136,26 @@ extension PageTitleView {
  //MARK: -对外暴露的方法
 extension PageTitleView {
     func setTitleWithProgress(progress : CGFloat, sourceIndex : Int, targetIndex : Int) {
-        print("")
+        //1.取出sourceLable/targatLable
+        let sourceLable = titleLables[sourceIndex]
+        let targetLable = titleLables[targetIndex]
+        //2.处理滑块逻辑
+        
+        let moveTotalX = targetLable.frame.origin.x - sourceLable.frame.origin.x
+        let moveX = moveTotalX * progress
+        scrollLine.frame.origin.x = sourceLable.frame.origin.x + moveX;
+        
+        //3.颜色的渐变
+        //3.1 取出变化的范围
+        let colorDelta = (ZHSelectColor.0 - ZHNormalColor.0,ZHSelectColor.1 - ZHNormalColor.1,ZHSelectColor.2 - ZHSelectColor.2)
+        //3.2 变化sourceLable
+        sourceLable.textColor = UIColor(r: ZHSelectColor.0 - colorDelta.0 * progress, g:  ZHSelectColor.1 - colorDelta.1 * progress, b:  ZHSelectColor.2 - colorDelta.2 * progress)
+        //3.3 变化targetLable
+        targetLable.textColor = UIColor(r: ZHNormalColor.0 + colorDelta.0 * progress, g: ZHNormalColor.1 + colorDelta.1 * progress, b: ZHNormalColor.2 + colorDelta.2 * progress)
+        
+        // 4.记录最新的index
+        currentIndex = targetIndex
+        
     }
 }
 

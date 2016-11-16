@@ -21,6 +21,8 @@ class PageContentView: UIView {
     fileprivate weak var parentViewController : UIViewController?
     // MARK:- 记录开滑动的offsetX
     fileprivate var startOffsetX : CGFloat = 0
+    // MARK:- 禁止滚动,避免重复的执行事件
+     fileprivate var isForbidScrollDelegate: Bool = false
     //MARK: -懒加载属性
     fileprivate lazy var collectionView : UICollectionView = {[weak self] in
         //1.创建layuot
@@ -90,9 +92,12 @@ extension PageContentView:UICollectionViewDataSource {
  //MARK: -遵守UIcollectionView的代理
 extension PageContentView :UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isForbidScrollDelegate = false
         startOffsetX = scrollView.contentOffset.x
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 0.判断是否是点击事件
+        if isForbidScrollDelegate { return}
         //1.定义需要获取的数据
         var progress : CGFloat = 0
         var sourceIndex : Int = 0
@@ -136,8 +141,13 @@ extension PageContentView :UICollectionViewDelegate {
 }
  //MARK: -对外暴露的方法
 extension PageContentView {
+    
+
       func setCurrentIndent(currentIndex : Int)  {
-                let  offsetX = CGFloat(currentIndex) * ZHScreenW
+        // 1.记录需要禁止执行代理方法
+        isForbidScrollDelegate = true
+        // 2.滚到正确的位置
+        let  offsetX = CGFloat(currentIndex) * ZHScreenW
         collectionView.setContentOffset(CGPoint(x : offsetX,y:0 ), animated: false)
     }
 }
