@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="1156" y="-79.610194902548727"/>
         </scene>
-        <!--s首页-->
+        <!--首页-->
         <scene sceneID="TA0-dG-zEI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8xh-Mc-gTh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="s首页" image="btn_home_normal" selectedImage="btn_home_selected" id="azm-3b-5aW"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="btn_home_normal" selectedImage="btn_home_selected" id="azm-3b-5aW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eRH-0d-50t">
