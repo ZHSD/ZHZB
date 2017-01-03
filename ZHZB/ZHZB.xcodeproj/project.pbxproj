@@ -18,10 +18,10 @@
 		610BB70D1DDB426A00A7AB94 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610BB70C1DDB426A00A7AB94 /* common.swift */; };
 		6118BCB91DDBDAEF003FAD60 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6118BCB81DDBDAEF003FAD60 /* PageContentView.swift */; };
 		6118BCBB1DDBE1D5003FAD60 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6118BCBA1DDBE1D5003FAD60 /* UIColor-Extension.swift */; };
+		615FFE051DEFE37900C00A70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618E9B1C1DDA9E3F00E4E8E3 /* Main.storyboard */; };
+		615FFE061DEFE38400C00A70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618E9B211DDA9E3F00E4E8E3 /* LaunchScreen.storyboard */; };
 		618E9B191DDA9E3F00E4E8E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618E9B181DDA9E3F00E4E8E3 /* AppDelegate.swift */; };
-		618E9B1E1DDA9E3F00E4E8E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618E9B1C1DDA9E3F00E4E8E3 /* Main.storyboard */; };
 		618E9B201DDA9E3F00E4E8E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 618E9B1F1DDA9E3F00E4E8E3 /* Assets.xcassets */; };
-		618E9B231DDA9E3F00E4E8E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 618E9B211DDA9E3F00E4E8E3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,9 +164,9 @@
 		618E9B481DDAADAA00E4E8E3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				610BB7001DDB029F00A7AB94 /* Controller */,
 				610BB7011DDB029F00A7AB94 /* Model */,
 				610BB7021DDB029F00A7AB94 /* View */,
+				610BB7001DDB029F00A7AB94 /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -267,12 +267,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615FFE061DEFE38400C00A70 /* LaunchScreen.storyboard in Resources */,
+				615FFE051DEFE37900C00A70 /* Main.storyboard in Resources */,
 				610BB6FA1DDB01D000A7AB94 /* Home.storyboard in Resources */,
 				610BB6F61DDAFF1900A7AB94 /* Follow.storyboard in Resources */,
-				618E9B231DDA9E3F00E4E8E3 /* LaunchScreen.storyboard in Resources */,
 				610BB6F71DDAFF1900A7AB94 /* Live.storyboard in Resources */,
 				618E9B201DDA9E3F00E4E8E3 /* Assets.xcassets in Resources */,
-				618E9B1E1DDA9E3F00E4E8E3 /* Main.storyboard in Resources */,
 				610BB6F81DDAFF1900A7AB94 /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +321,7 @@
 		618E9B251DDA9E3F00E4E8E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -358,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -370,6 +371,7 @@
 		618E9B261DDA9E3F00E4E8E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -401,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -418,6 +420,7 @@
 				INFOPLIST_FILE = ZHZB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zh.yt.ZHZB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -433,6 +436,7 @@
 				INFOPLIST_FILE = ZHZB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zh.yt.ZHZB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

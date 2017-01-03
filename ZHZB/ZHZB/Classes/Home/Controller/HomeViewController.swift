@@ -62,6 +62,7 @@ extension HomeViewController {
         pageContentView.backgroundColor = UIColor.blue
     
     }
+    
     private func setupNavigationBar(){
         //1.1设置左侧item
                 navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "logo")
@@ -92,4 +93,5 @@ extension HomeViewController : pageContentViewDelegate {
     func pageContentView(contentView: PageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
         pageTitleView.setTitleWithProgress(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
     }
+    
 }
