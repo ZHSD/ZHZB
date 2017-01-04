@@ -130,11 +130,13 @@ extension PageContentView :UICollectionViewDelegate {
             if sourceIndex >= childVcs.count {
                 sourceIndex = childVcs.count - 1
             }
+            
 
         }
         //3.通知代理,将progress/sourceIndex/targetIndex传递给TitleView
         
         delegate?.pageContentView(contentView: self, progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+        
 //        print("progress:\(progress), sourceIndex:\(sourceIndex),targetIndex:\(targetIndex)")
         
     }

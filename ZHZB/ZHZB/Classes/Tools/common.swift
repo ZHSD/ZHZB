@@ -10,6 +10,7 @@ import UIKit
 
 let ZHStatusBarH : CGFloat = 20
 let ZHNavigationBarH : CGFloat = 44
+let ZHTabbarH : CGFloat = 44
 
 let ZHScreenW = UIScreen.main.bounds.width
 let ZHScreenH = UIScreen.main.bounds.height

@@ -147,7 +147,7 @@ extension PageTitleView {
         
         //3.颜色的渐变
         //3.1 取出变化的范围
-        let colorDelta = (ZHSelectColor.0 - ZHNormalColor.0,ZHSelectColor.1 - ZHNormalColor.1,ZHSelectColor.2 - ZHSelectColor.2)
+        let colorDelta = (ZHSelectColor.0 - ZHNormalColor.0,ZHSelectColor.1 - ZHNormalColor.1,ZHSelectColor.2 - ZHNormalColor.2)
         //3.2 变化sourceLable
         sourceLable.textColor = UIColor(r: ZHSelectColor.0 - colorDelta.0 * progress, g:  ZHSelectColor.1 - colorDelta.1 * progress, b:  ZHSelectColor.2 - colorDelta.2 * progress)
         //3.3 变化targetLable
